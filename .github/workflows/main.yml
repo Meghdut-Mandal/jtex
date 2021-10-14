@@ -34,23 +34,11 @@ jobs:
           sudo apt-get -q -y install atlassian-plugin-sdk
       - name: Build packages
         run: atlas-package 
-      - name: Create Release
+      - name: Create  Release
         id: create_release
-        uses: actions/create-release@v1.1.0
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: true
-          prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/jtex-0.5.jar
-          asset_name: jtex-0.5.jar
-          asset_content_type: application/java-archive
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: flase
+          files: ./target/jtex-0.5.jar
