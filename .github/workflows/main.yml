@@ -17,7 +17,6 @@ jobs:
           java-version: 8
           java-package: jdk
           architecture: x64
-
       - uses: actions/cache@v1
         with:
           path: ~/.m2/repository
@@ -41,4 +40,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: flase
-          files: ./target/jtex-0.5.jar
+          files: target/jtex-0.5.jar
