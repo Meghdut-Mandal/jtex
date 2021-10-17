@@ -42,3 +42,8 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: flase
           files: ./target/jtex-0.5.jar
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            prerelease: false
+            files: target/jtex-0.5.jar
