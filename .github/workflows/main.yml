@@ -33,11 +33,3 @@ jobs:
           sudo apt-get -q -y install atlassian-plugin-sdk
       - name: Build packages
         run: atlas-package 
-      - name: Create  Release
-        id: create_release
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: flase
-          files: target/jtex-0.5.jar
